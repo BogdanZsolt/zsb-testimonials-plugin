@@ -42,6 +42,8 @@ if( !class_exists( 'ZSB_Testimonials' ) ){
             // Define constants used througout the plugin
             $this->define_constants();
 
+            require_once( ZSB_TESTIMONIALS_PATH . 'post-types/class.zsb-testimonials-cpt.php' );
+            $ZSBTestimonialsPostType = new ZSB_Testimonials_Post_Type();
         }
 
          /**
@@ -65,6 +67,7 @@ if( !class_exists( 'ZSB_Testimonials' ) ){
          * Deactivate the plugin
          */
         public static function deactivate(){
+            unregister_post_type( 'zsb-testimonials' );
             flush_rewrite_rules();
         }
 
